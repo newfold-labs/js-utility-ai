@@ -22,7 +22,6 @@ function DescriptionGenerator({ siteDesc, siteTitle, siteType, siteSubtype, site
   }, [siteDesc])
 
   const getAIResult = async () => {
-    console.log("Get AI component");
     if (siteDesc && siteTitle) {
       const userPrompt = `current description is ${siteDesc} site title is ${siteTitle} site type is ${siteType} sub type is ${siteSubtype} site url is ${siteUrl}`;
       try {
@@ -31,14 +30,11 @@ function DescriptionGenerator({ siteDesc, siteTitle, siteType, siteSubtype, site
           userPrompt,
           'descgenerator'
         );
-        console.log("Result", result);
         setAIResults(result.result);
       } catch (exception) {
-        console.log('exception', exception);
         setBtnText("Show Suggestions");
       } finally {
         setBtnText("Show Suggestions");
-        console.log('Finally block');
       }
     }
   };
@@ -46,7 +42,7 @@ function DescriptionGenerator({ siteDesc, siteTitle, siteType, siteSubtype, site
   return (
     <div>
       <button
-        className='button'
+        className='button suggestions-button'
         onClick={() => { getAIResult() }}
       >
         {btnText}
