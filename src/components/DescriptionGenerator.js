@@ -1,26 +1,19 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import moduleAI from '../../lib/moduleAI';
 import QuickReplySuggestions from './QuickReplySuggestions';
 import './styles.scss';
 
 function DescriptionGenerator({ siteDesc, siteTitle, siteType, siteSubtype, siteUrl, handleSuggestionClick }) {
-
-  const [aiResults, setAIResults] = useState([]);
   const [suggestionButton, setSuggestionButton] = useState(false);
   const [btnText, setBtnText] = useState('Show Suggestions');
-
-  /* const handleSuggestionClick = (suggestion) => {
-    setSiteDesc(suggestion);
-  }; */
-
+  const [aiResults, setAIResults] = useState([]);
   useEffect(() => {
     if (siteDesc) {
       setSuggestionButton(true);
     }
     return () => {
-    }
-  }, [siteDesc])
-
+    };
+  }, [siteDesc]);
   const getAIResult = async () => {
     if (siteDesc && siteTitle) {
       const userPrompt = `current description is ${siteDesc} site title is ${siteTitle} site type is ${siteType} sub type is ${siteSubtype} site url is ${siteUrl}`;
@@ -38,12 +31,11 @@ function DescriptionGenerator({ siteDesc, siteTitle, siteType, siteSubtype, site
       }
     }
   };
-
   return (
     <div>
       <button
         className='button suggestions-button'
-        onClick={() => { getAIResult() }}
+        onClick={(event) => { event.preventDefault(); getAIResult(); }}
       >
         {btnText}
       </button>
@@ -52,7 +44,6 @@ function DescriptionGenerator({ siteDesc, siteTitle, siteType, siteSubtype, site
         onClick={handleSuggestionClick}
       />
     </div>
-  )
+  );
 }
-
-export default DescriptionGenerator
+export default DescriptionGenerator;
