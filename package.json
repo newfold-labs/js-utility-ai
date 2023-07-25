@@ -10,9 +10,9 @@
     "email": "micah@bluehost.com"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "prepublish": "npm run build"
-  },
+    "start": "wp-scripts start ./index.js",
+    "build": "wp-scripts build ./index.js"
+  },  
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -26,6 +26,7 @@
     "@babel/cli": "^7.22.5",
     "@babel/core": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
+    "@wordpress/scripts": "^26.9.0",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.8.1",
     "sass": "^1.63.4",
