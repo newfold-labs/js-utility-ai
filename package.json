@@ -1,7 +1,7 @@
 {
   "name": "@newfold-labs/wp-module-ai",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "description": "A module for providing artificial intelligence capabilities.",
   "license": "GPL-2.0-or-later",
   "private": true,
