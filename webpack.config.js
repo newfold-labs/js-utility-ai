@@ -5,8 +5,13 @@ const wpScriptsConfig = require('@wordpress/scripts/config/webpack.config');
 const aiUtilWebpackConfig = {
     output: {
         path: path.resolve(process.cwd(), `dist`),
-        library: ['newfold', 'wp-module-ai', '[name]'],
+        library: 'DescriptionGenerator',
         libraryTarget: 'window',
+    },
+    resolve: {
+      alias: {
+        react: path.resolve('./node_modules/react'),
+      },
     }
 };
 
