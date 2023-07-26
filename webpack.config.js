@@ -6,13 +6,28 @@ const aiUtilWebpackConfig = {
     output: {
         path: path.resolve(process.cwd(), `dist`),
         library: 'DescriptionGenerator',
-        libraryTarget: 'window',
+        libraryTarget: 'umd',
+        umdNamedDefine: true,
+        globalObject: 'this'
     },
     resolve: {
-      alias: {
-        react: path.resolve('./node_modules/react'),
+      extensions: ['.js'],
+    },
+    externals: {
+      // Use external version of React
+      "react": {
+          "commonjs": "react",
+          "commonjs2": "react",
+          "amd": "react",
+          "root": "React"
       },
-    }
+      "react-dom": {
+          "commonjs": "react-dom",
+          "commonjs2": "react-dom",
+          "amd": "react-dom",
+          "root": "ReactDOM"
+      }
+  }
 };
 
 module.exports = merge(wpScriptsConfig, aiUtilWebpackConfig);
