@@ -10,9 +10,6 @@ const aiUtilWebpackConfig = {
         umdNamedDefine: true,
         globalObject: 'this'
     },
-    resolve: {
-      extensions: ['.js'],
-    },
     externals: {
       // Use external version of React
       "react": {
@@ -27,6 +24,12 @@ const aiUtilWebpackConfig = {
           "amd": "react-dom",
           "root": "ReactDOM"
       }
+  },
+  resolve: {
+    extensions: ['.js'],
+    alias: {
+      react: path.resolve('./node_modules/react')
+    }
   }
 };
 
