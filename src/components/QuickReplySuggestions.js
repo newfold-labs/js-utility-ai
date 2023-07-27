@@ -1,4 +1,4 @@
-import React from 'react';
+import '@wordpress/element';
 import './styles.scss';
 
 const QuickReplySuggestions = ({ suggestions, onClick }) => {
@@ -6,7 +6,7 @@ const QuickReplySuggestions = ({ suggestions, onClick }) => {
 		<div className="quick-reply-wrapper">
 			{suggestions && suggestions.map((suggestion, index) => (
 				<div
-					className="quick-reply-suggestion this-is-it"
+					className="quick-reply-suggestion"
 					key={index}
 					onClick={() => onClick(suggestion.text)}
 				>
