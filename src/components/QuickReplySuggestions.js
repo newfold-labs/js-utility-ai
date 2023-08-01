@@ -1,19 +1,18 @@
 import '@wordpress/element';
-import './styles.scss';
+import { QuickReplyWrapper, QuickReplySuggestion } from './styles';
 
 const QuickReplySuggestions = ({ suggestions, onClick }) => {
 	return (
-		<div className="quick-reply-wrapper">
+		<QuickReplyWrapper>
 			{suggestions && suggestions.map((suggestion, index) => (
-				<div
-					className="quick-reply-suggestion"
+				<QuickReplySuggestion
 					key={index}
 					onClick={() => onClick(suggestion.text)}
 				>
 					{suggestion.text}
-				</div>
+				</QuickReplySuggestion>
 			))}
-		</div>
+		</QuickReplyWrapper>
 	);
 };
 

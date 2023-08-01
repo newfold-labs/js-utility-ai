@@ -1,7 +1,7 @@
 import { useState, useEffect } from '@wordpress/element';
 import moduleAI from '../../lib/moduleAI';
 import QuickReplySuggestions from './QuickReplySuggestions';
-import './styles.scss';
+import { SuggestionButton } from './styles';
 
 function DescriptionGenerator({ siteDesc, siteTitle, siteType, siteSubtype, siteUrl, handleSuggestionClick }) {
   const [suggestionButton, setSuggestionButton] = useState(false);
@@ -33,12 +33,11 @@ function DescriptionGenerator({ siteDesc, siteTitle, siteType, siteSubtype, site
   };
   return (
     <div>
-      <button
-        className='button suggestions-button'
+      <SuggestionButton
         onClick={(event) => { event.preventDefault(); getAIResult(); }}
       >
         {btnText}
-      </button>
+      </SuggestionButton>
       <QuickReplySuggestions
         suggestions={aiResults}
         onClick={handleSuggestionClick}
