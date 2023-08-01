@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const SuggestionButton = styled.button`
-  padding: 5px 15px !important;
-  background-color: white !important;
+  padding: 10px 15px;
+  background-color: white;
+  border: 2px solid #3575d3;
+  outline: none;
+  border-radius: 4px;
 `;
 
 export const QuickReplyWrapper = styled.div`
