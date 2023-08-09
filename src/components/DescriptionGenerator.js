@@ -3,7 +3,14 @@ import moduleAI from '../../lib/moduleAI';
 import QuickReplySuggestions from './QuickReplySuggestions';
 import { SuggestionButton } from './styles';
 
-function DescriptionGenerator({ siteDesc, siteTitle, siteType, siteSubtype, siteUrl, handleSuggestionClick }) {
+function DescriptionGenerator({ 
+  siteDesc,
+  siteTitle,
+  siteType,
+  siteSubtype,
+  siteUrl,
+  targetElementSelector
+}) {
   const [suggestionButton, setSuggestionButton] = useState(false);
   const [btnText, setBtnText] = useState('Show Suggestions');
   const [aiResults, setAIResults] = useState([]);
@@ -31,6 +38,15 @@ function DescriptionGenerator({ siteDesc, siteTitle, siteType, siteSubtype, site
       }
     }
   };
+
+  const handleSuggestionClick = (suggestion) => {
+    console.log(targetElementSelector);
+    const targetElement = document.querySelector(targetElementSelector);
+    if (targetElement) {
+      targetElement.value = suggestion;
+    }
+  };
+
   return (
     <div>
       <SuggestionButton
