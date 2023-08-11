@@ -11,16 +11,28 @@ function DescriptionGenerator({
   siteUrl,
   targetElementSelector
 }) {
-  const [suggestionButton, setSuggestionButton] = useState(false);
+  
   const [btnText, setBtnText] = useState('Show Suggestions');
   const [aiResults, setAIResults] = useState([]);
+  const [targetHasValue, setTargetHasValue] = useState(false); // New state variable
+  
   useEffect(() => {
-    if (siteDesc) {
-      setSuggestionButton(true);
+    const targetElement = document.querySelector(targetElementSelector);
+    if (targetElement && targetElement.value) {
+      setTargetHasValue(true);
+    } else {
+      setTargetHasValue(false);
     }
-    return () => {
+   // listening to input changes on the elements
+    const handleInputChange = () => {
+      setTargetHasValue(!!targetElement.value);
     };
-  }, [siteDesc]);
+    targetElement?.addEventListener('input', handleInputChange);
+    return () => {
+      targetElement?.removeEventListener('input', handleInputChange);
+    };
+  }, [targetElementSelector]);
+  
   const getAIResult = async () => {
     if (siteDesc && siteTitle) {
       const userPrompt = `current description is ${siteDesc} site title is ${siteTitle} site type is ${siteType} sub type is ${siteSubtype} site url is ${siteUrl}`;
@@ -40,7 +52,6 @@ function DescriptionGenerator({
   };
 
   const handleSuggestionClick = (suggestion) => {
-    console.log(targetElementSelector);
     const targetElement = document.querySelector(targetElementSelector);
     if (targetElement) {
       targetElement.value = suggestion;
@@ -49,11 +60,13 @@ function DescriptionGenerator({
 
   return (
     <div>
-      <SuggestionButton
-        onClick={(event) => { event.preventDefault(); getAIResult(); }}
-      >
-        {btnText}
-      </SuggestionButton>
+      {targetHasValue && (
+        <SuggestionButton
+          onClick={(event) => { event.preventDefault(); getAIResult(); }}
+        >
+          {btnText}
+        </SuggestionButton>
+      )}
       <QuickReplySuggestions
         suggestions={aiResults}
         onClick={handleSuggestionClick}
