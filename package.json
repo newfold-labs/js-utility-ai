@@ -10,8 +10,7 @@
     "email": "micah@bluehost.com"
   },
   "scripts": {
-    "start": "wp-scripts start ./index.js",
-    "build": "wp-scripts build ./index.js"
+    "build": "wp-scripts build ./index.js --config ./scripts/webpack.config.js"
   },
   "dependencies": {
     "@wordpress/api-fetch": "^6.28.0"
