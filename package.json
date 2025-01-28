@@ -1,7 +1,7 @@
 {
   "name": "@newfold/wp-module-ai",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "./build/index.js",
   "description": "A module for providing artificial intelligence capabilities.",
   "license": "GPL-2.0-or-later",
   "private": true,
@@ -9,7 +9,15 @@
     "name": "Micah Wood",
     "email": "micah@bluehost.com"
   },
+  "scripts": {
+    "start": "wp-scripts start ./index.js",
+    "build": "wp-scripts build ./index.js"
+  },
   "dependencies": {
     "@wordpress/api-fetch": "^6.28.0"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^27",
+    "ajv": "^7.2.4"
   }
 }
