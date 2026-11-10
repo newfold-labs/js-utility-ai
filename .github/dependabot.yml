@@ -4,11 +4,17 @@ updates:
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
-    target-branch: "main"
     allow:
       - dependency-type: direct
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
     commit-message:
       prefix: "GitHub Actions"
       include: "scope"
@@ -19,12 +25,18 @@ updates:
   # Maintain dependencies for npm
   - package-ecosystem: "npm"
     directory: "/"
-    target-branch: "main"
     allow:
       - dependency-type: direct
     schedule:
-      interval: "daily"
-    versioning-strategy: increase
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+    groups:
+      npm-minor-patch:
+        update-types:
+          - "minor"
+          - "patch"
+    versioning-strategy: increase-if-necessary
     commit-message:
       prefix: "NPM"
       prefix-development: "NPM Dev"
