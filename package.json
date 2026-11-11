@@ -16,7 +16,7 @@
     "@wordpress/api-fetch": "^6.28.0"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^27",
+    "@wordpress/scripts": "^37",
     "ajv": "^7.2.4"
   }
 }
