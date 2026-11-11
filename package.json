@@ -13,7 +13,7 @@
     "build": "wp-scripts build ./index.js --config ./scripts/webpack.config.js"
   },
   "dependencies": {
-    "@wordpress/api-fetch": "^6.28.0"
+    "@wordpress/api-fetch": "^8.1.0"
   },
   "devDependencies": {
     "@wordpress/scripts": "^27",
