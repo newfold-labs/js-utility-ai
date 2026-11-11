@@ -17,6 +17,6 @@
   },
   "devDependencies": {
     "@wordpress/scripts": "^27",
-    "ajv": "^7.2.4"
+    "ajv": "^8.20.0"
   }
 }
